@@ -1,23 +1,17 @@
-all: llDemo
+all: lab1arc
+CFLAGS =-g -O3
 
-CFLAGS=-g -O3
-
-# Symbols helpful for understanding the productions
-#   $@ is the production's target
-#   $^ are the production's prerequisites
-
-llDemo: llist.o llDemo.o
+lab1arc: bstree.o lab1arc.o
 	cc -o $@ $^
 
-llist.o: llist.c llist.h
-	cc -c $(CFLAGS) llist.c
+bstree.o: bstree.c bstree.h
+	cc -c $(CFLAGS) bstree.c
 
-llDemo.o: llDemo.c llist.h
-	cc -c $(CFLAGS) llDemo.c
+lab1arc.o: lab1arc.c bstree.h
+	cc -c $(CFLAGS) lab1arc.c
 
 clean:
-	rm -f *.o llDemo
+	rm -f *.o lab1arc
 
-demo: llDemo
-	(echo first; echo "second line"; echo "third and last") | ./llDemo
-
+demo: lab1arc
+	./lab1arc 
